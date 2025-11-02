@@ -56,7 +56,7 @@ export default function DashboardHeader({ onSearch }: DashboardHeaderProps) {
               />
             </div>
           </div>
-            <h1 className="text-lg font-semibold">Saathi Admin</h1>
+            <h1 className="text-lg font-semibold">Storezee Admin</h1>
           </div>
 
           <form onSubmit={handleSearchSubmit} className="flex-1 max-w-md">
