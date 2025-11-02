@@ -1,0 +1,203 @@
+Create a React Admin Dashboard UI (using Vite + React + Tailwind CSS + Axios + React Router) for Saathi Admin Panel.
+👉 Do not create or mock backend APIs.
+👉 Integrate only with these existing APIs and handle all success & error responses via toast notifications.
+
+🧩 Functional Requirements
+1. Login Page
+
+Input: phone number (e.g., 8050500205)
+
+On “Send OTP” → call
+
+POST https://api-dev.thestorezee.com/api/saathi/saathi_login
+Body:
+{
+  "phone": "8050500205"
+}
+
+
+Response:
+
+{
+  "message": "OTP is sent to your register email.",
+  "data": {
+    "saathi_id": "7e41e7a8-a1a3-44ad-b150-68a587b01383",
+    "full_name": "Yash Singh",
+    "phone": "8050500205",
+    "email": "yashkant@gmail.com",
+    "is_verified": true,
+    "profile_verified": true,
+    "document_verified": false
+  },
+  "is_register": true
+}
+
+
+Save saathi_id in localStorage.
+
+Show success or error message using toast.
+
+2. OTP Verification Page
+
+Input: OTP (6-digit)
+
+API:
+
+POST https://api-dev.thestorezee.com/api/saathi/verify_saathi_otp
+Body:
+{
+  "saathi_id": "<stored id>",
+  "otp": "123456"
+}
+
+
+Response:
+
+{
+  "success": "Success",
+  "message": "OTP verified successfully!",
+  "data": {
+    "saathi_id": "7e41e7a8-a1a3-44ad-b150-68a587b01383",
+    "full_name": "Yash Singh",
+    "phone": "8050500205",
+    "email": "yashkant@gmail.com",
+    "is_verified": true,
+    "profile_verified": true,
+    "document_verified": false
+  }
+}
+
+
+On success → redirect to dashboard.
+
+On error → show toast with message.
+
+🧾 Dashboard Page
+
+Top bar → Search input (booking_id) + Logout button.
+
+Booking list table → fetched using:
+
+GET https://api-dev.thestorezee.com/api/stroage_booking/get_all_bookings?booking_id=<optional>
+
+
+Response:
+
+{
+  "success": true,
+  "message": "Luggage List Returned successfully!",
+  "data": [
+    {
+      "id": "b0c4d420-49b9-4c93-b07a-c87275d1118c",
+      "booking_id": "BAG012",
+      "status": "luggage_Stored",
+      "booking_type": "Hourly",
+      "booking_created_time": "2025-10-17T19:00:25.771000Z",
+      "booking_end_time": "2025-10-18T03:30:25.771000Z",
+      "amount": null,
+      "storage_unit": "Downtown Storage Hub",
+      "luggage_image": "https://storezee-bucket.s3.ap-south-1.amazonaws.com/luggage/af46d334-226c-42c3-90b5-4b92fc79f62e/bd683962d40a4c5997df1e8eba5b43e1.jpeg",
+      "user_booked": {
+        "id": "af46d334-226c-42c3-90b5-4b92fc79f62e",
+        "full_name": "Piyush kumar",
+        "email": "pk2155584@gmail.com",
+        "phone": "8409705446",
+        "city_name": "Patna",
+        "profile_picture": "https://avatar.iran.liara.run/public/77.png",
+        "documents": [
+          {
+            "id": 6,
+            "original_name": "IMG_20251018_001635_717.jpg",
+            "imghippo_url": "https://storezee-bucket.s3.ap-south-1.amazonaws.com/documents/af46d334-226c-42c3-90b5-4b92fc79f62e/c090117cec674262b48db1c45b3c2b2a.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}
+
+📋 Dashboard Table Columns
+Column	Description
+Booking ID	booking_id
+Status	Dropdown with editable options
+Booking Type	booking_type
+Created Time	booking_created_time
+End Time	booking_end_time
+Amount	Editable field
+Storage Unit	storage_unit
+User Name	Clickable → opens user details
+View Image	Button → opens luggage_image URL in modal or new tab
+🧑‍💻 Status Update API
+PATCH https://api-dev.thestorezee.com/api/stroage_booking/change_status
+Body:
+{
+  "storage_id": "<booking.id>",
+  "status": "<new_status>",
+  "updatedby": "<saathi_id>"
+}
+
+
+Response:
+
+{
+  "success": true,
+  "message": "Status Updated Successfully!"
+}
+
+
+Status dropdown values:
+
+pending, active, confirmed, pickup, out_for_delivery, luggage_Stored, luggage_reached, completed, cancelled
+
+💰 Amount Update API
+PATCH https://api-dev.thestorezee.com/api/stroage_booking/change_amount
+Body:
+{
+  "storage_id": "<booking.id>",
+  "amount": "<new_amount>",
+  "updatedby": "<saathi_id>"
+}
+
+
+Response:
+
+{
+  "success": true,
+  "message": "Amount Updated Successfully!"
+}
+
+🧾 User Details Page
+
+Displays name, email, phone, profile picture, city, and document list (each imghippo_url clickable to open image).
+
+Data comes directly from the booking list response (user_booked).
+
+🔔 Error & Success Handling
+
+Use a toast system (like react-hot-toast) for all responses:
+
+On API success → show green toast with "message" field.
+
+On API failure → show red toast with error message from backend or generic fallback.
+
+💅 UI Style
+
+Use Tailwind CSS + Shadcn UI components.
+
+Responsive layout.
+
+Simple and clean design with modern admin look.
+
+Use cards and table layout.
+
+Display a loading spinner while fetching.
+
+🧠 Notes
+
+Store saathi_id in localStorage.
+
+If user is not verified or logged in → redirect to login.
+
+No backend creation — only connect to given API endpoints.
+
+Code must be modular and production-ready.
