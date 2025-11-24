@@ -71,6 +71,7 @@ export interface Booking {
   storage_unit: string;
   luggage_image: string;
   user_booked: UserBooked;
+  payment_status: string;
 }
 
 export interface BookingsResponse {

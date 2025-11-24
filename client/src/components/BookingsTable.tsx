@@ -85,6 +85,7 @@ export default function BookingsTable({
                 <TableHead className="font-semibold">Booking ID</TableHead>
                 <TableHead className="font-semibold">Status</TableHead>
                 <TableHead className="font-semibold">Status Updated By</TableHead>
+                <TableHead className="font-semibold">Payment Status</TableHead>
                 <TableHead className="font-semibold">Type</TableHead>
                 <TableHead className="font-semibold">Created</TableHead>
                 <TableHead className="font-semibold">End Time</TableHead>
@@ -112,6 +113,17 @@ export default function BookingsTable({
                   </TableCell>
                   <TableCell>
                     <span className="text-sm">{booking.updated_by}</span>
+                  </TableCell>
+                  <TableCell>
+                    <span
+                      className={`text-sm font-medium ${
+                        booking.payment_status?.toLowerCase() === "paid"
+                          ? "text-green-600"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {booking.payment_status}
+                    </span>
                   </TableCell>
                   <TableCell>
                     <Badge variant="secondary">{booking.booking_type}</Badge>

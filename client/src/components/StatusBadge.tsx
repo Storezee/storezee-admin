@@ -9,26 +9,26 @@ import {
 import { ChevronDown } from 'lucide-react';
 
 const STATUS_OPTIONS = [
-  { value: 'pending', label: 'Pending' },
-  { value: 'active', label: 'Active' },
+  // { value: 'pending', label: 'Pending' },
+  // { value: 'active', label: 'Active' },
   { value: 'confirmed', label: 'Confirmed' },
-  { value: 'pickup', label: 'Pickup' },
-  { value: 'out_for_delivery', label: 'Out for Delivery' },
+  // { value: 'pickup', label: 'Pickup' },
+  // { value: 'out_for_delivery', label: 'Out for Delivery' },
   { value: 'luggage_Stored', label: 'Luggage Stored' },
-  { value: 'luggage_reached', label: 'Luggage Reached' },
+  // { value: 'luggage_reached', label: 'Luggage Reached' },
   { value: 'completed', label: 'Completed' },
   { value: 'cancelled', label: 'Cancelled' },
 ];
 
 const getStatusColor = (status: string): string => {
   const statusMap: Record<string, string> = {
-    pending: 'bg-status-pending/10 text-status-pending border-status-pending/20',
-    active: 'bg-status-active/10 text-status-active border-status-active/20',
+    // pending: 'bg-status-pending/10 text-status-pending border-status-pending/20',
+    // active: 'bg-status-active/10 text-status-active border-status-active/20',
     confirmed: 'bg-status-confirmed/10 text-status-confirmed border-status-confirmed/20',
-    pickup: 'bg-status-pickup/10 text-status-pickup border-status-pickup/20',
-    out_for_delivery: 'bg-status-delivery/10 text-status-delivery border-status-delivery/20',
+    // pickup: 'bg-status-pickup/10 text-status-pickup border-status-pickup/20',
+    // out_for_delivery: 'bg-status-delivery/10 text-status-delivery border-status-delivery/20',
     luggage_Stored: 'bg-status-stored/10 text-status-stored border-status-stored/20',
-    luggage_reached: 'bg-status-delivery/10 text-status-delivery border-status-delivery/20',
+    // luggage_reached: 'bg-status-delivery/10 text-status-delivery border-status-delivery/20',
     completed: 'bg-status-completed/10 text-status-completed border-status-completed/20',
     cancelled: 'bg-status-cancelled/10 text-status-cancelled border-status-cancelled/20',
   };
