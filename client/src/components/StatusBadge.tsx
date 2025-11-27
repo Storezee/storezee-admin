@@ -18,6 +18,7 @@ const STATUS_OPTIONS = [
   // { value: 'luggage_reached', label: 'Luggage Reached' },
   { value: 'completed', label: 'Completed' },
   { value: 'cancelled', label: 'Cancelled' },
+  { value: 'payment_completed', label: 'Payment Completed' },
 ];
 
 const getStatusColor = (status: string): string => {
@@ -31,6 +32,7 @@ const getStatusColor = (status: string): string => {
     // luggage_reached: 'bg-status-delivery/10 text-status-delivery border-status-delivery/20',
     completed: 'bg-status-completed/10 text-status-completed border-status-completed/20',
     cancelled: 'bg-status-cancelled/10 text-status-cancelled border-status-cancelled/20',
+    paymentCompleted: 'bg-status-completed/10 text-status-completed border-status-completed/20',
   };
   
   return statusMap[status] || 'bg-muted text-muted-foreground border-border';
