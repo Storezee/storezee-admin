@@ -16,9 +16,9 @@ const STATUS_OPTIONS = [
   // { value: 'out_for_delivery', label: 'Out for Delivery' },
   { value: 'luggage_Stored', label: 'Luggage Stored' },
   // { value: 'luggage_reached', label: 'Luggage Reached' },
+  { value: 'payment_completed', label: 'Payment Completed' },
   { value: 'completed', label: 'Completed' },
   { value: 'cancelled', label: 'Cancelled' },
-  { value: 'payment_completed', label: 'Payment Completed' },
 ];
 
 const getStatusColor = (status: string): string => {
